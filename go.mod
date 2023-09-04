@@ -1,3 +1,3 @@
-module snippetbox.lidu.net
+module github.com/kongielowa/snippetbox
 
 go 1.20
