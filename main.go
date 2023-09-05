@@ -13,13 +13,35 @@ func home(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Hello from Snippetbox"))
 }
 
+// Add a snippetView handler function.
+
+func snippetView(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Display a specific snippet..."))
+}
+
+// Add a snippetCreate handler function.
+
+func snippetCreate(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Create a new snippet..."))
+
+}
+
+
 func main() {
 	
-	// Use the http.NewServeMux() function to initialize a new servemux,
-	// then reister the home function as the handler for the "/" URL pattern.
-	
+	//1 Use the http.NewServeMux() function to initialize a new servemux,
+	//1 then reister the home function as the handler for the "/" URL pattern.
+
+	//2 Register the two new handler functions and corresponding URL patterns with
+	//2 the servemux, in exactly the same way that we did before.
+
+	//1
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", home)
+
+	//2
+	mux.HandleFunc("/snippet/view", snippetView)
+	mux.HandleFunc("/snippet/create", snippetCreate)
 
 	// Use the http.ListenAndServe() function to start a new web server. We pass in
 	// two parameters: the TCP network adress to listen on (in this case ":4000")
